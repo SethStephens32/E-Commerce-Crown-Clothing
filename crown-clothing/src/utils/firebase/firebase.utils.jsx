@@ -4,6 +4,9 @@ import {initializeApp} from 'firebase/app';
 // getting firebase auth and sign in methods
 import {getAuth, signInWithPopup, GoogleAuthProvider} from 'firebase/auth';
 
+// getting firebase firestore
+import {getFirestore, doc, getDoc, setDoc} from 'firebase/firestore';
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAf9bYMsaBZ-unv_CsCVJmQN8iMvKymuSs",
@@ -24,3 +27,17 @@ provider.setCustomParameters({prompt: 'select_account'});
 
 export const auth = getAuth(firebaseApp);
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+
+export const db = getFirestore();
+
+export const createUserProfileDocumentFromAuth = async (userAuth) => {
+    // uid is the unique id of the user in the database shown in the console
+    const userDocRef = doc(db, 'users', userAuth.uid);
+    console.log(userDocRef)
+    const userDocSnapshot = await getDoc(userDocRef);
+    console.log(userDocSnapshot.exists())
+}
+
+
+
+
