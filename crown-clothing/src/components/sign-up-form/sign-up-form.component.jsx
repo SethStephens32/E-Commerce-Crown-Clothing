@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { createAuthUserWithEmailAndPassword, createUserProfileDocumentFromAuth } from "../../utils/firebase/firebase.utils"
+import FormInput from "../form-input/form-input.component"
 
 const defaultFormFields = {
     displayName: "",
@@ -53,18 +54,42 @@ const SignUpForm = () => {
         <div className="sign-up">
             <h1>Sign up with your email and password</h1>
             <form className="sign-up-form" onSubmit={handleSubmit}>
-                <label>Display Name</label>
-                <input required type="text" onChange={handleChange} name="displayName" value={displayName}></input>
+               <FormInput
+                type="text"
+                name="displayName"
+                value={displayName}
+                onChange={handleChange}
+                label="Display Name"
+                required
+                />
 
-                <label>Email</label>
-                <input required type="email" onChange={handleChange} name="email" value={email}></input>
+                <FormInput
+                type="email"
+                name="email"
+                value={email}
+                onChange={handleChange}
+                label="Email"
+                required
+                />
 
-                <label>Password</label>
-                <input required type="password" onChange={handleChange} name="password" value={password}></input>
+                <FormInput
+                type="password"
+                name="password"
+                value={password}
+                onChange={handleChange}
+                label="Password"
+                required
+                />
 
-                <label>Confirm Password</label>
-                <input required type="password" onChange={handleChange} name="confirmPassword" value={confirmPassword}></input>
-
+                <FormInput
+                type="password"
+                name="confirmPassword"
+                value={confirmPassword}
+                onChange={handleChange}
+                label="Confirm Password"
+                required
+                />
+            
                 <button type="submit" onChange={handleChange}>Sign Up</button>
                 </form>
         </div>
